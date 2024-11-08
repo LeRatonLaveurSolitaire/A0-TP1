@@ -276,12 +276,12 @@ void main()
 {
   printf("Evaluation : N=%d, type=" STR(TYPE) "\n", N);
   zero();
-  // copy_ij();
-  // copy_ji();
-  // add_ij();
-  // add_ji();
+  copy_ij();
+  copy_ji();
+  add_ij();
+  add_ji();
   ps();
   mm_ijk();
-  // mm_ikj();
-  // mm_b_ijk();
+  mm_ikj();
+  mm_b_ijk();
 }
