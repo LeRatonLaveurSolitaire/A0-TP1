@@ -51,70 +51,74 @@ def main() -> None:
                 values = line.split('\t')[1:]
                 for l,val in enumerate(values):
                     values[l] = float(val)
-                result2_values_mean[i,(line_number-1)//2] = sum(values)/len(values)
+                values = np.sort(values)
+                result2_values_mean[i,(line_number-1)//2] = sum(values[:-4])/len(values[:-4])
 
 
     # Plots  N/opti pour chaque function et type
 
-    # for type_number, type_str in enumerate(result_1_type):
-    #     for func_number, func_name in enumerate(result_1_function):
-    #         data = result1_values_mean[type_number,:,:,func_number]
+    for type_number, type_str in enumerate(result_1_type):
+        for func_number, func_name in enumerate(result_1_function):
+            data = result1_values_mean[type_number,:,:,func_number]
 
-    #         # Set up the plot
-    #         fig, ax = plt.subplots(figsize=(10, 6))
+            # Set up the plot
+            fig, ax = plt.subplots(figsize=(10, 6))
 
-    #         # Number of groups and bars per group
-    #         num_groups, num_bars = len(result_1_N), len(result_1_opti)
+            # Number of groups and bars per group
+            num_groups, num_bars = len(result_1_N), len(result_1_opti)
 
-    #         # Bar width and positioning
-    #         bar_width = 0.2
-    #         group_spacing = 0.5  # Adjust this for more or less spacing between groups
-    #         x = np.arange(num_groups) * (num_bars * bar_width + group_spacing)  # Adding space between groups
+            # Bar width and positioning
+            bar_width = 0.2
+            group_spacing = 0.5  # Adjust this for more or less spacing between groups
+            x = np.arange(num_groups) * (num_bars * bar_width + group_spacing)  # Adding space between groups
 
-    #         # Plotting each set of bars
-    #         for i in range(num_bars):
-    #             ax.bar(x + i * bar_width, data[:, i], width=bar_width, label=f'O{result_1_opti[i]}')
+            # Plotting each set of bars
+            for i in range(num_bars):
+                ax.bar(x + i * bar_width, data[:, i], width=bar_width, label=f'O{result_1_opti[i]}')
 
-    #         # Add labels, title, and legend
-    #         ax.set_xlabel('N')
-    #         ax.set_ylabel('Number of cycle/iteration')
-    #         ax.set_title(f'Impact of the optimisation and N on the function {func_name} with type {type_str}')
-    #         ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
-    #         ax.set_xticklabels([f'N = {result_1_N[i]}' for i in range(num_groups)])
-    #         ax.legend()
-    #         plt.savefig(f'./plot_N_opti/opti_N_{type_str}_{func_name}.pdf')
-    #         #plt.show()
+            # Add labels, title, and legend
+            ax.set_xlabel('N')
+            ax.set_ylabel('Number of cycle/iteration')
+            ax.set_title(f'Impact of the optimisation and N on the function {func_name} with type {type_str}')
+            ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
+            ax.set_xticklabels([f'N = {result_1_N[i]}' for i in range(num_groups)])
+            ax.legend()
+            plt.savefig(f'./plot_N_opti/opti_N_{type_str}_{func_name}.pdf')
+            plt.close()
+            #plt.show()
 
     # Plots  N/opti pour chaque function et type
 
-    # for opti_number, opti_str in enumerate(result_1_opti):
-    #     for func_number, func_name in enumerate(result_1_function):
-    #         data = np.transpose(result1_values_mean[:,:,opti_number,func_number])
+    for opti_number, opti_str in enumerate(result_1_opti):
+        for func_number, func_name in enumerate(result_1_function):
+            data = np.transpose(result1_values_mean[:,:,opti_number,func_number])
 
-    #         # Set up the plot
-    #         fig, ax = plt.subplots(figsize=(10, 6))
+            # Set up the plot
+            fig, ax = plt.subplots(figsize=(10, 6))
 
-    #         # Number of groups and bars per group
-    #         num_groups, num_bars = len(result_1_N), len(result_1_type)
+            # Number of groups and bars per group
+            num_groups, num_bars = len(result_1_N), len(result_1_type)
 
-    #         # Bar width and positioning
-    #         bar_width = 0.2
-    #         group_spacing = 0.5  # Adjust this for more or less spacing between groups
-    #         x = np.arange(num_groups) * (num_bars * bar_width + group_spacing)  # Adding space between groups
+            # Bar width and positioning
+            bar_width = 0.2
+            group_spacing = 0.5  # Adjust this for more or less spacing between groups
+            x = np.arange(num_groups) * (num_bars * bar_width + group_spacing)  # Adding space between groups
 
-    #         # Plotting each set of bars
-    #         for i in range(num_bars):
-    #             ax.bar(x + i * bar_width, data[:, i], width=bar_width, label=f'{result_1_type[i]}')
+            # Plotting each set of bars
+            for i in range(num_bars):
+                ax.bar(x + i * bar_width, data[:, i], width=bar_width, label=f'{result_1_type[i]}')
 
-    #         # Add labels, title, and legend
-    #         ax.set_xlabel('N')
-    #         ax.set_ylabel('Number of cycle/iteration')
-    #         ax.set_title(f'Impact of the type and N on the function {func_name} with O{opti_str}')
-    #         ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
-    #         ax.set_xticklabels([f'N = {result_1_N[i]}' for i in range(num_groups)])
-    #         ax.legend()
-    #         plt.savefig(f'./plot_N_type/N_type_O{opti_str}_{func_name}.pdf')
-    #         #plt.show()
+            # Add labels, title, and legend
+            ax.set_xlabel('N')
+            ax.set_ylabel('Number of cycle/iteration')
+            ax.set_title(f'Impact of the type and N on the function {func_name} with O{opti_str}')
+            ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
+            ax.set_xticklabels([f'N = {result_1_N[i]}' for i in range(num_groups)])
+            ax.legend()
+            plt.savefig(f'./plot_N_type/N_type_O{opti_str}_{func_name}.pdf')
+            plt.close()
+            #plt.show()
+
 
 
 if __name__ == "__main__":
