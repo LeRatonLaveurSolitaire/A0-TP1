@@ -42,7 +42,7 @@ static double dtime(long long debut, long long fin);
 // le fichier o� sont les fonctions d'acc�s au TSC
 #include "tsc.h"
 
-TYPE AF[N][N], YF[N][N], XF[N][N], YT[N][N], // matrices [N][N]
+TYPE AF[N][N], YF[N][N], XF[N][N], XT[N][N], // matrices [N][N]
     BF[N * N], CF[N * N],                    // vecteurs N^2
     SF;                                      // accumulateur
 
