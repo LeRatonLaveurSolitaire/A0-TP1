@@ -272,6 +272,34 @@ void mm_b_ijk()
   separateur();
 }
 
+// Produit de matrices avec transposition
+void mm_t_ijk()
+{
+  int i, j, k, m;
+
+  for (m = 0; m < M; m++)
+  {
+    debut = start_timer();
+	
+	for (i=0; i<N; i++)
+		for (j=0; j<N; j++)
+			XT[j][i] = XF[i][j]; //XT matrice transposée de XF (on lit XF ligne par ligne)
+
+    for (i = 0; i < N; i++)
+      for (j = 0; j < N; j++)
+      {
+        SF = ZERO;
+        for (k = 0; k < N; k++)
+          SF += AF[i][k] * XT[j][k];
+        YF[i][j] = SF;
+      }
+    benchtime = dtime(debut, stop_timer());
+    add_res(benchtime, m);
+  }
+  print_res("MM_t_ijk", ((double)N * N * N));
+  separateur();
+}
+
 void main()
 {
   printf("Evaluation : N=%d, type=" STR(TYPE) "\n", N);
@@ -282,6 +310,7 @@ void main()
   // add_ji();
   // ps();
   mm_ijk();
-  mm_ikj();
-  mm_b_ijk();
+  // mm_ikj();
+  // mm_b_ijk();
+  mm_t_ijk();
 }
