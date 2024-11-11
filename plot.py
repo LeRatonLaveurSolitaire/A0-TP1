@@ -177,13 +177,7 @@ def main() -> None:
 
     # Processing data generated during script 2
 
-    result_2_N = [f"{i}" for i in range(10, 251)] + [
-        "500",
-        "1000",
-        "1500",
-        "2000",
-        "3000",
-    ]
+    result_2_N = [f"{i}" for i in range(10, 251)]
     result_2_function = ["MM_ijk", "MM_ikj", "MM_B_ijk (BL =16)"]
 
     result2_values_mean = np.zeros((len(result_2_N), len(result_2_function)))
