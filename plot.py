@@ -205,7 +205,7 @@ def main() -> None:
         plt.plot(
             [int(n) for n in result_2_N],
             result2_values_mean[:, func_index],
-            "-o",
+            "-",
             label=func_name,
         )
     plt.title("Impact of N on different dot product function(O = 2, type = float)")
@@ -222,7 +222,7 @@ def main() -> None:
         plt.plot(
             [int(n) for n in result_2_N],
             result2_values_mean[:, func_index] / CPU_freq * 1e-9,
-            "-o",
+            "-",
             label=func_name,
         )
     plt.title(
