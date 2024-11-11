@@ -11,7 +11,7 @@ def main() -> None:
 
     # Processing data generated during script 1
 
-    result_1_type = ["char", "short", "int", "double", "float"]
+    result_1_type = ["char", "short", "int", "float", "double"]
     result_1_N = ["100", "500", "1000"]
     result_1_opti = ["0", "1", "2", "3"]
     result_1_function = [
