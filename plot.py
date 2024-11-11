@@ -136,7 +136,7 @@ def main() -> None:
     # Plots  N/type pour chaque function et type
 
     opti_number, opti_str = 3, "3"
-    type_size = [1, 2, 4, 8, 4]
+    type_size = [1, 2, 4, 4, 8]
     for func_number, func_name in enumerate(result_1_function):
         data = np.transpose(result1_values_mean[:, :, opti_number, func_number])
 
