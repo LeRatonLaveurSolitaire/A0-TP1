@@ -135,45 +135,46 @@ def main() -> None:
 
     # Plots  N/type pour chaque function et type
 
-    # opti_number, opti_str = 3, "3"
-    # type_size = [1, 2, 4, 8, 4]
-    # for func_number, func_name in enumerate(result_1_function):
-    #     data = np.transpose(result1_values_mean[:, :, opti_number, func_number])
+    opti_number, opti_str = 3, "3"
+    type_size = [1, 2, 4, 8, 4]
+    for func_number, func_name in enumerate(result_1_function):
+        data = np.transpose(result1_values_mean[:, :, opti_number, func_number])
 
-    #     # Set up the plot
-    #     fig, ax = plt.subplots(figsize=(10, 6))
+        # Set up the plot
+        fig, ax = plt.subplots(figsize=(10, 6))
 
-    #     # Number of groups and bars per group
-    #     num_groups, num_bars = len(result_1_N), len(result_1_type)
+        # Number of groups and bars per group
+        num_groups, num_bars = len(result_1_N), len(result_1_type)
 
-    #     # Bar width and positioning
-    #     bar_width = 0.2
-    #     group_spacing = 0.5  # Adjust this for more or less spacing between groups
-    #     x = np.arange(num_groups) * (
-    #         num_bars * bar_width + group_spacing
-    #     )  # Adding space between groups
+        # Bar width and positioning
+        bar_width = 0.2
+        group_spacing = 0.5  # Adjust this for more or less spacing between groups
+        x = np.arange(num_groups) * (
+            num_bars * bar_width + group_spacing
+        )  # Adding space between groups
 
-    #     # Plotting each set of bars
-    #     for i in range(num_bars):
-    #         ax.bar(
-    #             x + i * bar_width,
-    #             data[:, i] * type_size[i] * CPU_freq * 1e-9,
-    #             width=bar_width,
-    #             label=f"{result_1_type[i]}",
-    #         )
+        # Plotting each set of bars
+        for i in range(num_bars):
+            ax.bar(
+                x + i * bar_width,
+                (type_size[i] * CPU_freq * 1e-9) / data[:, i],
+                width=bar_width,
+                label=f"{result_1_type[i]}",
+            )
 
-    #     # Add labels, title, and legend
-    #     ax.set_xlabel("N")
-    #     ax.set_ylabel("Débit (Go/s)")
-    #     ax.set_title(
-    #         f"Débit en fonction de N et du type sur la function {func_name} avec O{opti_str}"
-    #     )
-    #     ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
-    #     ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
-    #     ax.legend()
-    #     plt.savefig(f"./plot_timing/N_type_O{opti_str}_{func_name}.png")
-    #     plt.close()
-    #     # plt.show()
+        # Add labels, title, and legend
+        ax.set_xlabel("N")
+        ax.set_ylabel("Débit (Go/s)")
+        ax.set_title(
+            f"Débit en fonction de N et du type sur la function {func_name} avec O{opti_str}"
+        )
+        ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
+        ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
+        ax.legend()
+        plt.savefig(f"./plot_timing/N_type_O{opti_str}_{func_name}.png")
+        plt.savefig(f"./plot_timing/N_type_O{opti_str}_{func_name}.pdf")
+        plt.close()
+        # plt.show()
 
     # Processing data generated during script 2
 
@@ -192,7 +193,9 @@ def main() -> None:
                 values = line.split("\t")[1:]
                 for l, val in enumerate(values):
                     values[l] = float(val)
-                result2_values_mean[i, (line_number - 1) // 2] = min(values)
+                result2_values_mean[i, (line_number - 1) // 2] = sum(values) / len(
+                    values
+                )
 
     fig, ax = plt.subplots(figsize=(10, 6))
     for func_index, func_name in enumerate(result_2_function):
@@ -206,16 +209,16 @@ def main() -> None:
     plt.xlabel("N")
     plt.ylabel("Cycles / Iteration")
     plt.legend()
-    plt.savefig("./plot_tr/Impact_of_N_on_dot_product.png")
-    plt.savefig("./plot_tr/Impact_of_N_on_dot_product.pdf")
-    plt.close()
-    # plt.show()
+    # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.png")
+    # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.pdf")
+    # plt.close()
+    plt.show()
 
     fig, ax = plt.subplots(figsize=(10, 6))
     for func_index, func_name in enumerate(result_2_function):
         plt.plot(
             [int(n) for n in result_2_N],
-            result2_values_mean[:, func_index] / CPU_freq * 1e-9,
+            result2_values_mean[:, func_index] / CPU_freq * 1e9,
             "-",
             label=func_name,
         )
