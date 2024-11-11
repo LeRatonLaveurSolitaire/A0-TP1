@@ -178,93 +178,93 @@ def main() -> None:
 
     # Copy
 
-    opti_number, opti_str = 2, "2"
-    type_size = [1, 2, 4, 4, 8]
-    type_index = 3
-    data = result1_values_mean[type_index, :, opti_number, 1:3]
+    # opti_number, opti_str = 2, "2"
+    # type_size = [1, 2, 4, 4, 8]
+    # type_index = 3
+    # data = result1_values_mean[type_index, :, opti_number, 1:3]
 
-    # Set up the plot
-    fig, ax = plt.subplots(figsize=(10, 6))
+    # # Set up the plot
+    # fig, ax = plt.subplots(figsize=(10, 6))
 
-    # Number of groups and bars per group
-    num_groups, num_bars = len(result_1_N), len([1, 2])
+    # # Number of groups and bars per group
+    # num_groups, num_bars = len(result_1_N), len([1, 2])
 
-    # Bar width and positioning
-    bar_width = 0.2
-    group_spacing = 0.5  # Adjust this for more or less spacing between groups
-    x = np.arange(num_groups) * (
-        num_bars * bar_width + group_spacing
-    )  # Adding space between groups
+    # # Bar width and positioning
+    # bar_width = 0.2
+    # group_spacing = 0.5  # Adjust this for more or less spacing between groups
+    # x = np.arange(num_groups) * (
+    #     num_bars * bar_width + group_spacing
+    # )  # Adding space between groups
 
-    # Plotting each set of bars
-    for i in range(num_bars):
-        ax.bar(
-            x + i * bar_width,
-            data[:, i],
-            width=bar_width,
-            label=f"{result_1_function[i+1]}",
-        )
+    # # Plotting each set of bars
+    # for i in range(num_bars):
+    #     ax.bar(
+    #         x + i * bar_width,
+    #         data[:, i],
+    #         width=bar_width,
+    #         label=f"{result_1_function[i+1]}",
+    #     )
 
-    # Add labels, title, and legend
-    ax.set_xlabel("N")
-    ax.set_ylabel("Cycles / itération")
-    ax.set_title(
-        f"Cycle par itération pour copy de matrice avec O{opti_str} pour type float"
-    )
-    ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
-    ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
-    ax.legend()
-    plt.savefig(f"./plot_copy/copy_O{opti_str}.png")
-    plt.savefig(f"./plot_copy/copy_O{opti_str}.pdf")
-    plt.close()
-    # plt.show()
+    # # Add labels, title, and legend
+    # ax.set_xlabel("N")
+    # ax.set_ylabel("Cycles / itération")
+    # ax.set_title(
+    #     f"Cycle par itération pour copy de matrice avec O{opti_str} pour type float"
+    # )
+    # ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
+    # ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
+    # ax.legend()
+    # plt.savefig(f"./plot_copy/copy_O{opti_str}.png")
+    # plt.savefig(f"./plot_copy/copy_O{opti_str}.pdf")
+    # plt.close()
+    # # plt.show()
 
-    # Add
+    # # Add
 
-    opti_number, opti_str = 2, "2"
-    type_size = [1, 2, 4, 4, 8]
-    type_index = 3
-    data = result1_values_mean[type_index, :, opti_number, 3:5]
+    # opti_number, opti_str = 2, "2"
+    # type_size = [1, 2, 4, 4, 8]
+    # type_index = 3
+    # data = result1_values_mean[type_index, :, opti_number, 3:5]
 
-    # Set up the plot
-    fig, ax = plt.subplots(figsize=(10, 6))
+    # # Set up the plot
+    # fig, ax = plt.subplots(figsize=(10, 6))
 
-    # Number of groups and bars per group
-    num_groups, num_bars = len(result_1_N), len([3, 4])
+    # # Number of groups and bars per group
+    # num_groups, num_bars = len(result_1_N), len([3, 4])
 
-    # Bar width and positioning
-    bar_width = 0.2
-    group_spacing = 0.5  # Adjust this for more or less spacing between groups
-    x = np.arange(num_groups) * (
-        num_bars * bar_width + group_spacing
-    )  # Adding space between groups
+    # # Bar width and positioning
+    # bar_width = 0.2
+    # group_spacing = 0.5  # Adjust this for more or less spacing between groups
+    # x = np.arange(num_groups) * (
+    #     num_bars * bar_width + group_spacing
+    # )  # Adding space between groups
 
-    # Plotting each set of bars
-    for i in range(num_bars):
-        ax.bar(
-            x + i * bar_width,
-            data[:, i],
-            width=bar_width,
-            label=f"{result_1_function[i+3]}",
-        )
+    # # Plotting each set of bars
+    # for i in range(num_bars):
+    #     ax.bar(
+    #         x + i * bar_width,
+    #         data[:, i],
+    #         width=bar_width,
+    #         label=f"{result_1_function[i+3]}",
+    #     )
 
-    # Add labels, title, and legend
-    ax.set_xlabel("N")
-    ax.set_ylabel("Cycles / itération")
-    ax.set_title(
-        f"Cycle par itération pour add de matrice avec O{opti_str} pour type float"
-    )
-    ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
-    ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
-    ax.legend()
-    plt.savefig(f"./plot_add/add_O{opti_str}.png")
-    plt.savefig(f"./plot_add/add_O{opti_str}.pdf")
-    plt.close()
-    # plt.show()
+    # # Add labels, title, and legend
+    # ax.set_xlabel("N")
+    # ax.set_ylabel("Cycles / itération")
+    # ax.set_title(
+    #     f"Cycle par itération pour add de matrice avec O{opti_str} pour type float"
+    # )
+    # ax.set_xticks(x + bar_width * (num_bars - 1) / 2)
+    # ax.set_xticklabels([f"N = {result_1_N[i]}" for i in range(num_groups)])
+    # ax.legend()
+    # plt.savefig(f"./plot_add/add_O{opti_str}.png")
+    # plt.savefig(f"./plot_add/add_O{opti_str}.pdf")
+    # plt.close()
+    # # plt.show()
 
     # Processing data generated during script 2
 
-    result_2_N = [f"{i}" for i in range(10, 251)]
+    result_2_N = [f"{i}" for i in range(11, 351)]
     result_2_function = ["MM_ijk", "MM_ikj", "MM_B_ijk (BL =16)"]
 
     result2_values_mean = np.zeros((len(result_2_N), len(result_2_function)))
@@ -281,66 +281,83 @@ def main() -> None:
                     values[l] = float(val)
                 result2_values_mean[i, (line_number - 1) // 2] = min(values)
 
-    # fig, ax = plt.subplots(figsize=(10, 6))
-    # for func_index, func_name in enumerate(result_2_function):
-    #     plt.plot(
-    #         [int(n) for n in result_2_N],
-    #         result2_values_mean[:, func_index],
-    #         "-",
-    #         label=func_name,
-    #     )
-    # plt.title("Impact of N on different dot product function(O = 2, type = float)")
-    # plt.xlabel("N")
-    # plt.ylabel("Cycles / Iteration")
-    # plt.legend()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for func_index, func_name in enumerate(result_2_function):
+        plt.plot(
+            [int(n) for n in result_2_N],
+            result2_values_mean[:, func_index],
+            "-",
+            label=func_name,
+        )
+    plt.title("Impact of N on different dot product function(O = 2, type = float)")
+    plt.xlabel("N")
+    plt.ylabel("Cycles / Iteration")
+    plt.legend()
     # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.png")
     # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.pdf")
     # plt.close()
     # plt.show()
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    for func_index, func_name in enumerate(result_2_function):
+    for func_index, func_name in enumerate(result_2_function[:1]):
         plt.plot(
             [int(n) for n in result_2_N],
-            result2_values_mean[:, func_index] / CPU_freq * 1e9,
+            result2_values_mean[:, func_index],
             "-",
             label=func_name,
         )
-    plt.title(
-        "Temps d'execution par itération des multiplications matricielles (O = 2, type = float)"
-    )
+    plt.title("Impact of N on mm_ijk (O = 2, type = float)")
     plt.xlabel("N")
-    plt.ylabel("temps (µs)")
+    plt.ylabel("Cycles / Iteration")
     plt.legend()
-    plt.savefig("./plot_tr/timing_on_dot_product.png")
-    plt.savefig("./plot_tr/timing_on_dot_product.pdf")
+    plt.savefig("./plot_tr/Impact_mm_ijk.png")
+    plt.savefig("./plot_tr/Impact_mm_ijk.pdf")
+    plt.show()
     plt.close()
+
+    # fig, ax = plt.subplots(figsize=(10, 6))
+    # for func_index, func_name in enumerate(result_2_function):
+    #     plt.plot(
+    #         [int(n) for n in result_2_N],
+    #         result2_values_mean[:, func_index] / CPU_freq * 1e9,
+    #         "-",
+    #         label=func_name,
+    #     )
+    # plt.title(
+    #     "Temps d'execution par itération des multiplications matricielles (O = 2, type = float)"
+    # )
+    # plt.xlabel("N")
+    # plt.ylabel("temps (µs)")
+    # plt.legend()
+    # plt.savefig("./plot_tr/timing_on_dot_product.png")
+    # plt.savefig("./plot_tr/timing_on_dot_product.pdf")
+    # plt.close()
     # plt.show()
 
     # Loading data from result_blk
 
-    # n_blks = list(range(2, 129)) + list(range(128, 1024, 8))
+    n_blks = list(range(2, 129)) + list(range(128, 1024, 8))
 
-    # blks_cycles_per_itr = np.zeros((len(n_blks),))
+    blks_cycles_per_itr = np.zeros((len(n_blks),))
 
-    # for i, n in enumerate(n_blks):
-    #     with open(f"./results_blk/result_float_N1000_O2_blk{n}.txt") as file:
-    #         lines = file.readlines()
-    #         blks_cycles_per_itr[i] += min(
-    #             [float(val) for val in lines[1].split("\t")[1:]]
-    #         )
+    for i, n in enumerate(n_blks):
+        with open(f"./results_blk/result_float_N1000_O2_blk{n}.txt") as file:
+            lines = file.readlines()
+            blks_cycles_per_itr[i] += min(
+                [float(val) for val in lines[1].split("\t")[1:]]
+            )
 
-    # fig, ax = plt.subplots(figsize=(10, 6))
-    # plt.plot(n_blks, blks_cycles_per_itr, label="mm_b_ijk(BL)")
-    # plt.plot([2, 1024], [3.63574, 3.63574], label="mm_ijk")
-    # plt.plot([2, 1024], [0.500909, 0.500909], label="mm_ikj")
-    # plt.title("Impact of the block size on MM_B_ijk (N = 1000, O = 2, type = float)")
-    # plt.xlabel("block size")
-    # plt.ylabel("Cycles / Iteration")
-    # plt.legend()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    plt.plot(n_blks, blks_cycles_per_itr, label="mm_b_ijk(BL)")
+    plt.plot([2, 1024], [3.63574, 3.63574], label="mm_ijk")
+    plt.plot([2, 1024], [0.500909, 0.500909], label="mm_ikj")
+    plt.title("Impact of the block size on MM_B_ijk (N = 1000, O = 2, type = float)")
+    plt.xlabel("block size")
+    plt.ylabel("Cycles / Iteration")
+    plt.legend()
     # plt.savefig("./plot_blk/Impact_of_blk_size.png")
-    # plt.close()
-    # # plt.show()
+    plt.close()
+    # plt.show()
 
     # Loading data from result_tr
 
