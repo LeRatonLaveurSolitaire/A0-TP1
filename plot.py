@@ -212,7 +212,7 @@ def main() -> None:
     # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.png")
     # plt.savefig("./plot_tr/Impact_of_N_on_dot_product.pdf")
     # plt.close()
-    plt.show()
+    # plt.show()
 
     fig, ax = plt.subplots(figsize=(10, 6))
     for func_index, func_name in enumerate(result_2_function):
