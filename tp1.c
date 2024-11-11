@@ -310,7 +310,7 @@ void main()
   // add_ji();
   // ps();
   mm_ijk();
-  // mm_ikj();
-  // mm_b_ijk();
-  mm_t_ijk();
+  mm_ikj();
+  mm_b_ijk();
+  // mm_t_ijk();
 }

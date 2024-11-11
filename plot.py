@@ -177,7 +177,13 @@ def main() -> None:
 
     # Processing data generated during script 2
 
-    result_2_N = ["25", "50", "75", "100", "250", "500", "1000", "1500", "2000", "3000"]
+    result_2_N = [f"{i}" for i in range(10, 251)] + [
+        "500",
+        "1000",
+        "1500",
+        "2000",
+        "3000",
+    ]
     result_2_function = ["MM_ijk", "MM_ikj", "MM_B_ijk (BL =16)"]
 
     result2_values_mean = np.zeros((len(result_2_N), len(result_2_function)))
@@ -202,13 +208,12 @@ def main() -> None:
             "-o",
             label=func_name,
         )
-    plt.title(
-        "Impact of N on different dot product function(N = 1000, O = 2, type = float)"
-    )
+    plt.title("Impact of N on different dot product function(O = 2, type = float)")
     plt.xlabel("N")
     plt.ylabel("Cycles / Iteration")
     plt.legend()
     plt.savefig("./plot_tr/Impact_of_N_on_dot_product.png")
+    plt.savefig("./plot_tr/Impact_of_N_on_dot_product.pdf")
     plt.close()
     # plt.show()
 
@@ -221,7 +226,7 @@ def main() -> None:
             label=func_name,
         )
     plt.title(
-        "Temps d'execution par itération des multiplications matricielles (N = 1000, O = 2, type = float)"
+        "Temps d'execution par itération des multiplications matricielles (O = 2, type = float)"
     )
     plt.xlabel("N")
     plt.ylabel("temps (µs)")
